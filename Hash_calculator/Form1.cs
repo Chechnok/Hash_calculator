@@ -35,6 +35,24 @@ namespace Hash_calculator
                 MessageBox.Show(file.message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private string computing(string algc)
+        {
+            string checkhash;
+            try
+            {
+                using (var str = File.OpenRead(file.path))
+                {
+                    checkhash = Hash_sum.compute(str, algc)[0];
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                checkhash = "IO Read error";
+            }
+            return checkhash;
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -75,6 +93,44 @@ namespace Hash_calculator
             sumcomp();
         }
 
+        private void VisualCompute(int stageNum, CheckBox algoCheck, string algoCode, int hashIndex, ref TextBox hashsumBox)
+        {
+            if (algoCheck.Checked)
+            {
+                hashes[hashIndex] = computing(algoCode); hashsumBox.Text = hashes[hashIndex];
+            }
+        }
+
+        private void chsb_Click(object sender, EventArgs e)
+        {
+            resetHashsumm();
+            VisualCompute(1, md5_check, "md5", 0, ref md5_textBox);
+            VisualCompute(2, sha1_check, "sha1", 1, ref sha1_box);
+            VisualCompute(3, sha256_check, "sha256", 2, ref sha256_box);
+            VisualCompute(4, sha384_check, "sha384", 3, ref sha384);
+            VisualCompute(5, sha512_check, "sha512", 4, ref sha512);
+            calculate_button.Text = "Calculate";
+        }
+        private void fileBox_DragEnter(object sender, DragEventArgs e)
+        {
+            string[] filepaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            if (filepaths.Length > 0)
+            {
+                setfile(filepaths[0]);
+            }
+        }
+        private void fileBox_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
         private void save_file_button_Click(object sender, EventArgs e)
         {
             SaveFileDialog SFD = new SaveFileDialog();
@@ -104,7 +160,7 @@ namespace Hash_calculator
                 OFD.Filter = "Text documents (.txt)|*.txt";
                 if (OFD.ShowDialog() == DialogResult.OK)
                 {
-                    inputHash.LoadFile(OFD.FileName, RichTextBoxStreamType.PlainText);
+                    input.LoadFile(OFD.FileName, RichTextBoxStreamType.PlainText);
 
                 }
 
