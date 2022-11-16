@@ -16,10 +16,10 @@ namespace Hash_calculator
         private void resetHashsumm()
         {
             md5_textBox.Text = "";
-            sha1_box.Text = "";
-            sha256_box.Text = "";
-            sha384.Text = "";
-            sha512.Text = "";
+            sha1_textBox.Text = "";
+            sha256_textBox.Text = "";
+            sha384_textBox.Text = "";
+            sha512_textBox.Text = "";
         }
         private void setfile(string filepath)
         {
@@ -28,7 +28,7 @@ namespace Hash_calculator
             {
 
                 file_size_textBox.Text = file.size;
-                file_size_textBox.Text = file.name;
+                file_name_textBox.Text = file.name;
                 resetHashsumm();
             }
             else
@@ -101,14 +101,14 @@ namespace Hash_calculator
             }
         }
 
-        private void chsb_Click(object sender, EventArgs e)
+        private void calculate_button_Click(object sender, EventArgs e)
         {
             resetHashsumm();
             VisualCompute(1, md5_check, "md5", 0, ref md5_textBox);
-            VisualCompute(2, sha1_check, "sha1", 1, ref sha1_box);
-            VisualCompute(3, sha256_check, "sha256", 2, ref sha256_box);
-            VisualCompute(4, sha384_check, "sha384", 3, ref sha384);
-            VisualCompute(5, sha512_check, "sha512", 4, ref sha512);
+            VisualCompute(2, sha1_check, "sha1", 1, ref sha1_textBox);
+            VisualCompute(3, sha256_check, "sha256", 2, ref sha256_textBox);
+            VisualCompute(4, sha384_check, "sha384", 3, ref sha384_textBox);
+            VisualCompute(5, sha512_check, "sha512", 4, ref sha512_textBox);
             calculate_button.Text = "Calculate";
         }
         private void fileBox_DragEnter(object sender, DragEventArgs e)
@@ -165,6 +165,16 @@ namespace Hash_calculator
                 }
 
             }
+        }
+
+        private void file_size_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void file_name_textBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

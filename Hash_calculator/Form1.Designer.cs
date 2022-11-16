@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.md5_textBox = new System.Windows.Forms.TextBox();
-            this.sha1_box = new System.Windows.Forms.TextBox();
-            this.sha256_box = new System.Windows.Forms.TextBox();
-            this.sha384 = new System.Windows.Forms.TextBox();
-            this.sha512 = new System.Windows.Forms.TextBox();
+            this.sha1_textBox = new System.Windows.Forms.TextBox();
+            this.sha256_textBox = new System.Windows.Forms.TextBox();
+            this.sha384_textBox = new System.Windows.Forms.TextBox();
+            this.sha512_textBox = new System.Windows.Forms.TextBox();
             this.md5_label = new System.Windows.Forms.Label();
             this.SHA1_label = new System.Windows.Forms.Label();
             this.SHA256_label = new System.Windows.Forms.Label();
@@ -49,12 +49,12 @@
             this.save_file_button = new System.Windows.Forms.Button();
             this.input = new System.Windows.Forms.RichTextBox();
             this.calculate_button = new System.Windows.Forms.Button();
-            this.md5_check = new System.Windows.Forms.RadioButton();
-            this.sha1_check = new System.Windows.Forms.RadioButton();
-            this.sha256_check = new System.Windows.Forms.RadioButton();
-            this.sha384_check = new System.Windows.Forms.RadioButton();
-            this.sha512_check = new System.Windows.Forms.RadioButton();
             this.open_file_with_hash_button = new System.Windows.Forms.Button();
+            this.md5_check = new System.Windows.Forms.CheckBox();
+            this.sha1_check = new System.Windows.Forms.CheckBox();
+            this.sha256_check = new System.Windows.Forms.CheckBox();
+            this.sha384_check = new System.Windows.Forms.CheckBox();
+            this.sha512_check = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -75,37 +75,37 @@
             this.md5_textBox.Size = new System.Drawing.Size(534, 23);
             this.md5_textBox.TabIndex = 1;
             // 
-            // sha1_box
+            // sha1_textBox
             // 
-            this.sha1_box.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.sha1_box.Location = new System.Drawing.Point(23, 215);
-            this.sha1_box.Name = "sha1_box";
-            this.sha1_box.Size = new System.Drawing.Size(534, 23);
-            this.sha1_box.TabIndex = 2;
+            this.sha1_textBox.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.sha1_textBox.Location = new System.Drawing.Point(23, 215);
+            this.sha1_textBox.Name = "sha1_textBox";
+            this.sha1_textBox.Size = new System.Drawing.Size(534, 23);
+            this.sha1_textBox.TabIndex = 2;
             // 
-            // sha256_box
+            // sha256_textBox
             // 
-            this.sha256_box.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.sha256_box.Location = new System.Drawing.Point(23, 270);
-            this.sha256_box.Name = "sha256_box";
-            this.sha256_box.Size = new System.Drawing.Size(534, 23);
-            this.sha256_box.TabIndex = 3;
+            this.sha256_textBox.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.sha256_textBox.Location = new System.Drawing.Point(23, 270);
+            this.sha256_textBox.Name = "sha256_textBox";
+            this.sha256_textBox.Size = new System.Drawing.Size(534, 23);
+            this.sha256_textBox.TabIndex = 3;
             // 
-            // sha384
+            // sha384_textBox
             // 
-            this.sha384.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.sha384.Location = new System.Drawing.Point(23, 326);
-            this.sha384.Name = "sha384";
-            this.sha384.Size = new System.Drawing.Size(534, 23);
-            this.sha384.TabIndex = 4;
+            this.sha384_textBox.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.sha384_textBox.Location = new System.Drawing.Point(23, 326);
+            this.sha384_textBox.Name = "sha384_textBox";
+            this.sha384_textBox.Size = new System.Drawing.Size(534, 23);
+            this.sha384_textBox.TabIndex = 4;
             // 
-            // sha512
+            // sha512_textBox
             // 
-            this.sha512.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.sha512.Location = new System.Drawing.Point(23, 383);
-            this.sha512.Name = "sha512";
-            this.sha512.Size = new System.Drawing.Size(534, 23);
-            this.sha512.TabIndex = 5;
+            this.sha512_textBox.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.sha512_textBox.Location = new System.Drawing.Point(23, 383);
+            this.sha512_textBox.Name = "sha512_textBox";
+            this.sha512_textBox.Size = new System.Drawing.Size(534, 23);
+            this.sha512_textBox.TabIndex = 5;
             // 
             // md5_label
             // 
@@ -158,6 +158,7 @@
             this.file_size_textBox.Name = "file_size_textBox";
             this.file_size_textBox.Size = new System.Drawing.Size(100, 23);
             this.file_size_textBox.TabIndex = 11;
+            this.file_size_textBox.TextChanged += new System.EventHandler(this.file_size_textBox_TextChanged);
             // 
             // file_size_label
             // 
@@ -174,6 +175,7 @@
             this.file_name_textBox.Name = "file_name_textBox";
             this.file_name_textBox.Size = new System.Drawing.Size(100, 23);
             this.file_name_textBox.TabIndex = 13;
+            this.file_name_textBox.TextChanged += new System.EventHandler(this.file_name_textBox_TextChanged);
             // 
             // fiile_name_label
             // 
@@ -227,61 +229,7 @@
             this.calculate_button.TabIndex = 19;
             this.calculate_button.Text = "Calculate";
             this.calculate_button.UseVisualStyleBackColor = true;
-            // 
-            // md5_check
-            // 
-            this.md5_check.AutoSize = true;
-            this.md5_check.Location = new System.Drawing.Point(104, 124);
-            this.md5_check.Name = "md5_check";
-            this.md5_check.Size = new System.Drawing.Size(50, 19);
-            this.md5_check.TabIndex = 20;
-            this.md5_check.TabStop = true;
-            this.md5_check.Text = "MD5";
-            this.md5_check.UseVisualStyleBackColor = true;
-            // 
-            // sha1_check
-            // 
-            this.sha1_check.AutoSize = true;
-            this.sha1_check.Location = new System.Drawing.Point(160, 124);
-            this.sha1_check.Name = "sha1_check";
-            this.sha1_check.Size = new System.Drawing.Size(54, 19);
-            this.sha1_check.TabIndex = 21;
-            this.sha1_check.TabStop = true;
-            this.sha1_check.Text = "SHA1";
-            this.sha1_check.UseVisualStyleBackColor = true;
-            // 
-            // sha256_check
-            // 
-            this.sha256_check.AutoSize = true;
-            this.sha256_check.Location = new System.Drawing.Point(220, 124);
-            this.sha256_check.Name = "sha256_check";
-            this.sha256_check.Size = new System.Drawing.Size(66, 19);
-            this.sha256_check.TabIndex = 22;
-            this.sha256_check.TabStop = true;
-            this.sha256_check.Text = "SHA256";
-            this.sha256_check.UseVisualStyleBackColor = true;
-            // 
-            // sha384_check
-            // 
-            this.sha384_check.AutoSize = true;
-            this.sha384_check.Location = new System.Drawing.Point(292, 124);
-            this.sha384_check.Name = "sha384_check";
-            this.sha384_check.Size = new System.Drawing.Size(66, 19);
-            this.sha384_check.TabIndex = 23;
-            this.sha384_check.TabStop = true;
-            this.sha384_check.Text = "SHA384";
-            this.sha384_check.UseVisualStyleBackColor = true;
-            // 
-            // sha512_check
-            // 
-            this.sha512_check.AutoSize = true;
-            this.sha512_check.Location = new System.Drawing.Point(364, 124);
-            this.sha512_check.Name = "sha512_check";
-            this.sha512_check.Size = new System.Drawing.Size(66, 19);
-            this.sha512_check.TabIndex = 24;
-            this.sha512_check.TabStop = true;
-            this.sha512_check.Text = "SHA512";
-            this.sha512_check.UseVisualStyleBackColor = true;
+            this.calculate_button.Click += new System.EventHandler(this.calculate_button_Click);
             // 
             // open_file_with_hash_button
             // 
@@ -293,17 +241,67 @@
             this.open_file_with_hash_button.UseVisualStyleBackColor = true;
             this.open_file_with_hash_button.Click += new System.EventHandler(this.open_file_with_hash_button_Click);
             // 
+            // md5_check
+            // 
+            this.md5_check.AutoSize = true;
+            this.md5_check.Location = new System.Drawing.Point(106, 126);
+            this.md5_check.Name = "md5_check";
+            this.md5_check.Size = new System.Drawing.Size(51, 19);
+            this.md5_check.TabIndex = 26;
+            this.md5_check.Text = "MD5";
+            this.md5_check.UseVisualStyleBackColor = true;
+            // 
+            // sha1_check
+            // 
+            this.sha1_check.AutoSize = true;
+            this.sha1_check.Location = new System.Drawing.Point(163, 127);
+            this.sha1_check.Name = "sha1_check";
+            this.sha1_check.Size = new System.Drawing.Size(55, 19);
+            this.sha1_check.TabIndex = 27;
+            this.sha1_check.Text = "SHA1";
+            this.sha1_check.UseVisualStyleBackColor = true;
+            // 
+            // sha256_check
+            // 
+            this.sha256_check.AutoSize = true;
+            this.sha256_check.Location = new System.Drawing.Point(224, 127);
+            this.sha256_check.Name = "sha256_check";
+            this.sha256_check.Size = new System.Drawing.Size(67, 19);
+            this.sha256_check.TabIndex = 28;
+            this.sha256_check.Text = "SHA256";
+            this.sha256_check.UseVisualStyleBackColor = true;
+            // 
+            // sha384_check
+            // 
+            this.sha384_check.AutoSize = true;
+            this.sha384_check.Location = new System.Drawing.Point(297, 126);
+            this.sha384_check.Name = "sha384_check";
+            this.sha384_check.Size = new System.Drawing.Size(67, 19);
+            this.sha384_check.TabIndex = 29;
+            this.sha384_check.Text = "SHA384";
+            this.sha384_check.UseVisualStyleBackColor = true;
+            // 
+            // sha512_check
+            // 
+            this.sha512_check.AutoSize = true;
+            this.sha512_check.Location = new System.Drawing.Point(370, 127);
+            this.sha512_check.Name = "sha512_check";
+            this.sha512_check.Size = new System.Drawing.Size(67, 19);
+            this.sha512_check.TabIndex = 30;
+            this.sha512_check.Text = "SHA512";
+            this.sha512_check.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 469);
-            this.Controls.Add(this.open_file_with_hash_button);
             this.Controls.Add(this.sha512_check);
             this.Controls.Add(this.sha384_check);
             this.Controls.Add(this.sha256_check);
             this.Controls.Add(this.sha1_check);
             this.Controls.Add(this.md5_check);
+            this.Controls.Add(this.open_file_with_hash_button);
             this.Controls.Add(this.calculate_button);
             this.Controls.Add(this.input);
             this.Controls.Add(this.save_file_button);
@@ -318,10 +316,10 @@
             this.Controls.Add(this.SHA256_label);
             this.Controls.Add(this.SHA1_label);
             this.Controls.Add(this.md5_label);
-            this.Controls.Add(this.sha512);
-            this.Controls.Add(this.sha384);
-            this.Controls.Add(this.sha256_box);
-            this.Controls.Add(this.sha1_box);
+            this.Controls.Add(this.sha512_textBox);
+            this.Controls.Add(this.sha384_textBox);
+            this.Controls.Add(this.sha256_textBox);
+            this.Controls.Add(this.sha1_textBox);
             this.Controls.Add(this.md5_textBox);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -337,10 +335,10 @@
 
         private Button button1;
         private TextBox md5_textBox;
-        private TextBox sha1_box;
-        private TextBox sha256_box;
-        private TextBox sha384;
-        private TextBox sha512;
+        private TextBox sha1_textBox;
+        private TextBox sha256_textBox;
+        private TextBox sha384_textBox;
+        private TextBox sha512_textBox;
         private Label md5_label;
         private Label SHA1_label;
         private Label SHA256_label;
@@ -355,11 +353,11 @@
         private Button save_file_button;
         private RichTextBox input;
         private Button calculate_button;
-        private RadioButton md5_check;
-        private RadioButton sha1_check;
-        private RadioButton sha256_check;
-        private RadioButton sha384_check;
-        private RadioButton sha512_check;
         private Button open_file_with_hash_button;
+        private CheckBox md5_check;
+        private CheckBox sha1_check;
+        private CheckBox sha256_check;
+        private CheckBox sha384_check;
+        private CheckBox sha512_check;
     }
 }
