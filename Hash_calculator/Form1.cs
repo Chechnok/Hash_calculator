@@ -176,5 +176,10 @@ namespace Hash_calculator
         {
 
         }
+
+        private void file_size_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
